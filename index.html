@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Subject: Math!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            overflow: hidden;
+            background: #1a1a2e;
+        }
+        
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-content {
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        /* Slide 1 - Introduction */
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .slide-1 h1 {
+            font-size: 80px;
+            color: #fff;
+            margin-bottom: 30px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .slide-1 p {
+            font-size: 50px;
+            color: #fff;
+            margin-top: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.5;
+        }
+        
+        .slide-1 .emoji {
+            font-size: 120px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Slide 2 - Title */
+        .slide-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .slide-2 h1 {
+            font-size: 80px;
+            color: #fff;
+            margin-bottom: 30px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .slide-2 .emoji {
+            font-size: 120px;
+            animation: bounce 2s infinite;
+        }
+        
+        /* Slide 3 - Why I Love Math */
+        .slide-3 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .slide-3 h2 {
+            font-size: 70px;
+            color: #fff;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        
+        .slide-3 p {
+            font-size: 45px;
+            color: #fff;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Slide 4 - Counting */
+        .slide-4 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .slide-4 h2 {
+            font-size: 70px;
+            color: #fff;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        
+        .numbers {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .number-box {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: #4facfe;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            animation: pop 0.5s ease-out backwards;
+        }
+        
+        .number-box:nth-child(1) { animation-delay: 0.1s; }
+        .number-box:nth-child(2) { animation-delay: 0.2s; }
+        .number-box:nth-child(3) { animation-delay: 0.3s; }
+        .number-box:nth-child(4) { animation-delay: 0.4s; }
+        .number-box:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes pop {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Slide 5 - Shapes */
+        .slide-5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .slide-5 h2 {
+            font-size: 70px;
+            color: #fff;
+            margin-bottom: 40px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        
+        .shapes {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .shape-item {
+            text-align: center;
+        }
+        
+        .shape {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+        
+        .circle {
+            background: #fff;
+            border-radius: 50%;
+            animation: rotate 3s linear infinite;
+        }
+        
+        .square {
+            background: #fff;
+            animation: rotate 3s linear infinite reverse;
+        }
+        
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+            border-bottom: 150px solid #fff;
+            animation: rotate 3s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .shape-item p {
+            font-size: 35px;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Slide 6 - Addition */
+        .slide-6 {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        
+        .slide-6 h2 {
+            font-size: 70px;
+            color: #333;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+        
+        .math-problem {
+            font-size: 80px;
+            color: #333;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            margin: 30px 0;
+        }
+        
+        /* Slide 7 - Conclusion */
+        .slide-7 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        .slide-7 h2 {
+            font-size: 70px;
+            color: #333;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+        
+        .slide-7 .big-emoji {
+            font-size: 150px;
+            margin: 30px 0;
+        }
+        
+        .slide-7 p {
+            font-size: 45px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        /* Navigation */
+        .nav-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 24px;
+            font-family: 'Comic Sans MS', cursive;
+            background: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Introduction -->
+        <div class="slide slide-1 active">
+            <div class="slide-content">
+                <div class="emoji">👋😊</div>
+                <h1>Hello Everyone!</h1>
+                <p>
+                    My name is <strong>Vo Binh Nguyen</strong><br>
+                    I am in <strong>Grade 1</strong><br>
+                    at <strong>Ha Huy Giap Primary School</strong>
+                </p>
+                <div class="emoji" style="margin-top: 30px;">🎒📚</div>
+            </div>
+        </div>
+        
+        <!-- Slide 2: Title -->
+        <div class="slide slide-2">
+            <div class="slide-content">
+                <div class="emoji">🎓📐✨</div>
+                <h1>My Favorite Subject is... MATH!</h1>
+                <div class="emoji">🔢➕🎉</div>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Why I Love Math -->
+        <div class="slide slide-3">
+            <div class="slide-content">
+                <h2>Why I Love Math! ❤️</h2>
+                <p>Because Math is fun and it helps us<br>builds our brain!</p>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Counting -->
+        <div class="slide slide-4">
+            <div class="slide-content">
+                <h2>I Can Count! 🎯</h2>
+                <div class="numbers">
+                    <div class="number-box">1</div>
+                    <div class="number-box">2</div>
+                    <div class="number-box">3</div>
+                    <div class="number-box">4</div>
+                    <div class="number-box">5</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Shapes -->
+        <div class="slide slide-5">
+            <div class="slide-content">
+                <h2>Fun Shapes! 🎨</h2>
+                <div class="shapes">
+                    <div class="shape-item">
+                        <div class="shape circle"></div>
+                        <p>Circle</p>
+                    </div>
+                    <div class="shape-item">
+                        <div class="shape square"></div>
+                        <p>Square</p>
+                    </div>
+                    <div class="shape-item">
+                        <div class="shape triangle"></div>
+                        <p>Triangle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Addition -->
+        <div class="slide slide-6">
+            <div class="slide-content">
+                <h2>I Can Add! ➕</h2>
+                <div class="math-problem">2 + 3 = 5</div>
+                <div class="math-problem">🍎🍎 + 🍎🍎🍎 = 🍎🍎🍎🍎🍎</div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: Conclusion -->
+        <div class="slide slide-7">
+            <div class="slide-content">
+                <h2>Math is Amazing! 🌟</h2>
+                <div class="big-emoji">🎉🎊🥳</div>
+                <p>Thank you for listening!</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">7</span>
+    </div>
+    
+    <div class="nav-buttons">
+        <button id="prevBtn" onclick="changeSlide(-1)">⬅️ Back</button>
+        <button id="nextBtn" onclick="changeSlide(1)">Next ➡️</button>
+    </div>
+    
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 7;
+        
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+            
+            document.getElementById('current').textContent = currentSlide;
+            
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+        
+        function changeSlide(n) {
+            currentSlide += n;
+            showSlide(currentSlide);
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+        
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
