@@ -14,7 +14,7 @@
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             overflow: hidden;
-            background: #1a1a2e;
+            background: #000;
         }
         
         .presentation {
@@ -34,136 +34,206 @@
             position: absolute;
             top: 0;
             left: 0;
+            overflow: hidden;
         }
         
         .slide.active {
             display: flex;
-            animation: slideIn 0.5s ease-out;
+            animation: slideIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
         
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateX(50px);
+                transform: scale(0.8) rotate(-5deg);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: scale(1) rotate(0deg);
             }
         }
         
         .slide-content {
-            max-width: 1000px;
+            max-width: 1100px;
             width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Animated Background Elements */
+        .bg-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, -50px) rotate(90deg); }
+            50% { transform: translate(-30px, 30px) rotate(180deg); }
+            75% { transform: translate(30px, 50px) rotate(270deg); }
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 3s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
         }
         
         /* Slide 1 - Introduction */
         .slide-1 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+        
+        .slide-1 .intro-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 40px;
+            padding: 60px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            animation: cardPulse 3s infinite;
+        }
+        
+        @keyframes cardPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 40px 80px rgba(0,0,0,0.4); }
         }
         
         .slide-1 h1 {
-            font-size: 80px;
-            color: #fff;
+            font-size: 90px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 30px;
-            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+            font-weight: bold;
+            animation: gradientShift 3s infinite;
         }
         
-        .slide-1 p {
-            font-size: 50px;
-            color: #fff;
-            margin-top: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            line-height: 1.5;
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+        }
+        
+        .slide-1 .intro-info {
+            font-size: 45px;
+            color: #333;
+            margin: 20px 0;
+            font-weight: bold;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+        
+        .slide-1 .intro-info:nth-child(3) { animation-delay: 0.2s; }
+        .slide-1 .intro-info:nth-child(4) { animation-delay: 0.4s; }
+        .slide-1 .intro-info:nth-child(5) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .slide-1 .emoji {
-            font-size: 120px;
+            font-size: 100px;
             animation: bounce 2s infinite;
+            display: inline-block;
         }
         
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
         }
         
         /* Slide 2 - Title */
         .slide-2 {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ff6b6b 100%);
         }
         
         .slide-2 h1 {
-            font-size: 80px;
+            font-size: 100px;
             color: #fff;
             margin-bottom: 30px;
-            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: titleBounce 1s ease-out;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        
+        @keyframes titleBounce {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            60% { transform: scale(1.1) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
         
         .slide-2 .emoji {
-            font-size: 120px;
-            animation: bounce 2s infinite;
+            font-size: 130px;
+            animation: spin 3s infinite linear;
+            display: inline-block;
+            margin: 0 20px;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         /* Slide 3 - Why I Love Math */
         .slide-3 {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 50%, #4facfe 100%);
         }
         
         .slide-3 h2 {
-            font-size: 70px;
+            font-size: 80px;
             color: #fff;
-            margin-bottom: 40px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-        }
-        
-        .slide-3 p {
-            font-size: 45px;
-            color: #fff;
-            line-height: 1.6;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        /* Slide 4 - Counting */
-        .slide-4 {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        
-        .slide-4 h2 {
-            font-size: 70px;
-            color: #fff;
-            margin-bottom: 40px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-        }
-        
-        .numbers {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .number-box {
-            width: 100px;
-            height: 100px;
-            background: #fff;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
+            margin-bottom: 50px;
+            text-shadow: 0 8px 25px rgba(0,0,0,0.4);
             font-weight: bold;
-            color: #4facfe;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            animation: pop 0.5s ease-out backwards;
+            animation: slideDown 0.8s ease-out;
         }
         
-        .number-box:nth-child(1) { animation-delay: 0.1s; }
-        .number-box:nth-child(2) { animation-delay: 0.2s; }
-        .number-box:nth-child(3) { animation-delay: 0.3s; }
-        .number-box:nth-child(4) { animation-delay: 0.4s; }
-        .number-box:nth-child(5) { animation-delay: 0.5s; }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         
-        @keyframes pop {
+        .slide-3 .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes popIn {
             from {
                 transform: scale(0);
                 opacity: 0;
@@ -174,53 +244,147 @@
             }
         }
         
+        .slide-3 p {
+            font-size: 50px;
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.6;
+            font-weight: bold;
+        }
+        
+        /* Slide 4 - Counting */
+        .slide-4 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #a8edea 100%);
+        }
+        
+        .slide-4 h2 {
+            font-size: 80px;
+            color: #fff;
+            margin-bottom: 50px;
+            text-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            font-weight: bold;
+        }
+        
+        .numbers {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+        
+        .number-box {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            font-weight: bold;
+            color: #4facfe;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            animation: pop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) backwards;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .number-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(0deg) translate(-100%, -100%); }
+            100% { transform: rotate(360deg) translate(100%, 100%); }
+        }
+        
+        .number-box:nth-child(1) { animation-delay: 0.1s; }
+        .number-box:nth-child(2) { animation-delay: 0.2s; }
+        .number-box:nth-child(3) { animation-delay: 0.3s; }
+        .number-box:nth-child(4) { animation-delay: 0.4s; }
+        .number-box:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes pop {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        
         /* Slide 5 - Shapes */
         .slide-5 {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 50%, #feca57 100%);
         }
         
         .slide-5 h2 {
-            font-size: 70px;
+            font-size: 80px;
             color: #fff;
-            margin-bottom: 40px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 50px;
+            text-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            font-weight: bold;
         }
         
         .shapes {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 60px;
             flex-wrap: wrap;
         }
         
         .shape-item {
             text-align: center;
+            animation: fadeIn 1s ease-out backwards;
+        }
+        
+        .shape-item:nth-child(1) { animation-delay: 0.2s; }
+        .shape-item:nth-child(2) { animation-delay: 0.4s; }
+        .shape-item:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .shape {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 25px;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
         }
         
         .circle {
-            background: #fff;
+            background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
             border-radius: 50%;
-            animation: rotate 3s linear infinite;
+            animation: rotate 4s linear infinite;
         }
         
         .square {
-            background: #fff;
-            animation: rotate 3s linear infinite reverse;
+            background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+            border-radius: 20px;
+            animation: rotate 4s linear infinite reverse;
         }
         
         .triangle {
             width: 0;
             height: 0;
-            border-left: 75px solid transparent;
-            border-right: 75px solid transparent;
-            border-bottom: 150px solid #fff;
-            animation: rotate 3s linear infinite;
+            border-left: 85px solid transparent;
+            border-right: 85px solid transparent;
+            border-bottom: 170px solid #fff;
+            animation: rotate 4s linear infinite;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
         }
         
         @keyframes rotate {
@@ -229,98 +393,143 @@
         }
         
         .shape-item p {
-            font-size: 35px;
+            font-size: 40px;
             color: #fff;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
+            padding: 15px 30px;
+            border-radius: 20px;
+            display: inline-block;
         }
         
         /* Slide 6 - Addition */
         .slide-6 {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
         }
         
         .slide-6 h2 {
-            font-size: 70px;
-            color: #333;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            font-size: 80px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 50px;
+            font-weight: bold;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
         .math-problem {
-            font-size: 80px;
-            color: #333;
+            font-size: 90px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #ff6b6b;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
-            margin: 30px 0;
+            margin: 30px auto;
+            padding: 30px 50px;
+            border-radius: 30px;
+            display: inline-block;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: mathBounce 2s infinite;
+        }
+        
+        @keyframes mathBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         
         /* Slide 7 - Conclusion */
         .slide-7 {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
         }
         
         .slide-7 h2 {
-            font-size: 70px;
-            color: #333;
+            font-size: 85px;
+            color: #fff;
             margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            font-weight: bold;
+            animation: rainbow 3s infinite;
+        }
+        
+        @keyframes rainbow {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
         }
         
         .slide-7 .big-emoji {
-            font-size: 150px;
+            font-size: 180px;
             margin: 30px 0;
+            animation: celebrate 1s infinite;
+            display: inline-block;
+        }
+        
+        @keyframes celebrate {
+            0%, 100% { transform: rotate(-10deg) scale(1); }
+            50% { transform: rotate(10deg) scale(1.1); }
         }
         
         .slide-7 p {
-            font-size: 45px;
-            color: #333;
+            font-size: 55px;
+            color: #fff;
             font-weight: bold;
+            text-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px 50px;
+            border-radius: 30px;
+            display: inline-block;
         }
         
         /* Navigation */
         .nav-buttons {
             position: fixed;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 25px;
             z-index: 1000;
         }
         
         button {
-            padding: 15px 30px;
-            font-size: 24px;
+            padding: 20px 40px;
+            font-size: 28px;
             font-family: 'Comic Sans MS', cursive;
-            background: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
+            font-weight: bold;
         }
         
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
         
         button:active {
-            transform: translateY(0);
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
         
         .slide-counter {
             position: fixed;
-            top: 30px;
-            right: 30px;
-            background: rgba(255,255,255,0.9);
-            padding: 15px 25px;
+            top: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 35px;
             border-radius: 50px;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: #333;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
     </style>
 </head>
@@ -328,37 +537,60 @@
     <div class="presentation">
         <!-- Slide 1: Introduction -->
         <div class="slide slide-1 active">
+            <div class="bg-animation">
+                <div class="floating-shape" style="width: 100px; height: 100px; background: rgba(255,255,255,0.2); border-radius: 50%; top: 10%; left: 10%;"></div>
+                <div class="floating-shape" style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); top: 70%; left: 80%; animation-delay: -5s;"></div>
+                <div class="floating-shape" style="width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; top: 30%; left: 85%; animation-delay: -10s;"></div>
+                <div class="sparkle" style="top: 20%; left: 30%; animation-delay: 0s;"></div>
+                <div class="sparkle" style="top: 60%; left: 70%; animation-delay: 1s;"></div>
+                <div class="sparkle" style="top: 80%; left: 20%; animation-delay: 2s;"></div>
+            </div>
             <div class="slide-content">
-                <div class="emoji">👋😊</div>
-                <h1>Hello Everyone!</h1>
-                <p>
-                    My name is <strong>Vo Binh Nguyen</strong><br>
-                    I am in <strong>Grade 1</strong><br>
-                    at <strong>Ha Huy Giap Primary School</strong>
-                </p>
-                <div class="emoji" style="margin-top: 30px;">🎒📚</div>
+                <div class="intro-card">
+                    <div class="emoji">👋</div>
+                    <h1>Hello Everyone!</h1>
+                    <div class="intro-info">My name is <span style="color: #667eea;">Vo Binh Nguyen</span></div>
+                    <div class="intro-info">I am in <span style="color: #764ba2;">Grade 1</span></div>
+                    <div class="intro-info">at <span style="color: #f093fb;">Ha Huy Giap Primary School</span></div>
+                    <div class="emoji" style="margin-top: 20px;">🎒📚✨</div>
+                </div>
             </div>
         </div>
         
         <!-- Slide 2: Title -->
         <div class="slide slide-2">
+            <div class="bg-animation">
+                <div class="floating-shape" style="width: 120px; height: 120px; background: rgba(255,255,255,0.15); border-radius: 50%; top: 15%; left: 15%;"></div>
+                <div class="floating-shape" style="width: 90px; height: 90px; background: rgba(255,255,255,0.15); top: 65%; left: 75%; animation-delay: -7s;"></div>
+            </div>
             <div class="slide-content">
-                <div class="emoji">🎓📐✨</div>
-                <h1>My Favorite Subject is... MATH!</h1>
-                <div class="emoji">🔢➕🎉</div>
+                <div class="emoji">🎓</div>
+                <h1>My Favorite Subject:<br>MATH!</h1>
+                <div class="emoji">🔢</div>
             </div>
         </div>
         
         <!-- Slide 3: Why I Love Math -->
         <div class="slide slide-3">
+            <div class="bg-animation">
+                <div class="floating-shape" style="width: 100px; height: 100px; background: rgba(255,255,255,0.15); border-radius: 50%; top: 20%; left: 10%;"></div>
+                <div class="floating-shape" style="width: 70px; height: 70px; background: rgba(255,255,255,0.15); top: 60%; left: 85%; animation-delay: -8s;"></div>
+            </div>
             <div class="slide-content">
                 <h2>Why I Love Math! ❤️</h2>
-                <p>Because Math is fun and it helps us<br>builds our brain!</p>
+                <div class="message-box">
+                    <p>Math is fun and it helps us<br>builds our brain!</p>
+                </div>
             </div>
         </div>
         
         <!-- Slide 4: Counting -->
         <div class="slide slide-4">
+            <div class="bg-animation">
+                <div class="sparkle" style="top: 15%; left: 20%; animation-delay: 0.5s;"></div>
+                <div class="sparkle" style="top: 75%; left: 80%; animation-delay: 1.5s;"></div>
+                <div class="sparkle" style="top: 40%; left: 90%; animation-delay: 2.5s;"></div>
+            </div>
             <div class="slide-content">
                 <h2>I Can Count! 🎯</h2>
                 <div class="numbers">
@@ -373,6 +605,10 @@
         
         <!-- Slide 5: Shapes -->
         <div class="slide slide-5">
+            <div class="bg-animation">
+                <div class="floating-shape" style="width: 110px; height: 110px; background: rgba(255,255,255,0.15); border-radius: 50%; top: 10%; left: 10%;"></div>
+                <div class="floating-shape" style="width: 85px; height: 85px; background: rgba(255,255,255,0.15); top: 70%; left: 80%; animation-delay: -6s;"></div>
+            </div>
             <div class="slide-content">
                 <h2>Fun Shapes! 🎨</h2>
                 <div class="shapes">
@@ -394,6 +630,11 @@
         
         <!-- Slide 6: Addition -->
         <div class="slide slide-6">
+            <div class="bg-animation">
+                <div class="sparkle" style="top: 25%; left: 25%; animation-delay: 0.3s;"></div>
+                <div class="sparkle" style="top: 65%; left: 75%; animation-delay: 1.3s;"></div>
+                <div class="sparkle" style="top: 45%; left: 85%; animation-delay: 2.3s;"></div>
+            </div>
             <div class="slide-content">
                 <h2>I Can Add! ➕</h2>
                 <div class="math-problem">2 + 3 = 5</div>
@@ -403,6 +644,13 @@
         
         <!-- Slide 7: Conclusion -->
         <div class="slide slide-7">
+            <div class="bg-animation">
+                <div class="sparkle" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+                <div class="sparkle" style="top: 30%; left: 85%; animation-delay: 0.5s;"></div>
+                <div class="sparkle" style="top: 70%; left: 20%; animation-delay: 1s;"></div>
+                <div class="sparkle" style="top: 85%; left: 80%; animation-delay: 1.5s;"></div>
+                <div class="sparkle" style="top: 50%; left: 50%; animation-delay: 2s;"></div>
+            </div>
             <div class="slide-content">
                 <h2>Math is Amazing! 🌟</h2>
                 <div class="big-emoji">🎉🎊🥳</div>
