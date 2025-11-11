@@ -10,19 +10,19 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+       
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             overflow: hidden;
             background: #000;
         }
-        
+       
         .presentation {
             width: 100vw;
             height: 100vh;
             position: relative;
         }
-        
+       
         .slide {
             width: 100%;
             height: 100%;
@@ -36,12 +36,12 @@
             left: 0;
             overflow: hidden;
         }
-        
+       
         .slide.active {
             display: flex;
             animation: slideIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        
+       
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -52,14 +52,14 @@
                 transform: scale(1) rotate(0deg);
             }
         }
-        
+       
         .slide-content {
             max-width: 1100px;
             width: 100%;
             position: relative;
             z-index: 10;
         }
-        
+       
         /* Animated Background Elements */
         .bg-animation {
             position: absolute;
@@ -69,20 +69,20 @@
             left: 0;
             z-index: 1;
         }
-        
+       
         .floating-shape {
             position: absolute;
             opacity: 0.15;
             animation: float 20s infinite ease-in-out;
         }
-        
+       
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
             25% { transform: translate(50px, -50px) rotate(90deg); }
             50% { transform: translate(-30px, 30px) rotate(180deg); }
             75% { transform: translate(30px, 50px) rotate(270deg); }
         }
-        
+       
         .sparkle {
             position: absolute;
             width: 4px;
@@ -91,17 +91,17 @@
             border-radius: 50%;
             animation: sparkle 3s infinite;
         }
-        
+       
         @keyframes sparkle {
             0%, 100% { opacity: 0; transform: scale(0); }
             50% { opacity: 1; transform: scale(1); }
         }
-        
+       
         /* Slide 1 - Introduction */
         .slide-1 {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         }
-        
+       
         .slide-1 .intro-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 40px;
@@ -111,12 +111,12 @@
             border: 3px solid rgba(255, 255, 255, 0.5);
             animation: cardPulse 3s infinite;
         }
-        
+       
         @keyframes cardPulse {
             0%, 100% { transform: scale(1); box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
             50% { transform: scale(1.02); box-shadow: 0 40px 80px rgba(0,0,0,0.4); }
         }
-        
+       
         .slide-1 h1 {
             font-size: 90px;
             background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
@@ -127,24 +127,24 @@
             font-weight: bold;
             animation: gradientShift 3s infinite;
         }
-        
+       
         @keyframes gradientShift {
             0%, 100% { filter: hue-rotate(0deg); }
             50% { filter: hue-rotate(20deg); }
         }
-        
+       
         .slide-1 .intro-info {
             font-size: 45px;
             color: #333;
             margin: 20px 0;
-            font-weight: bold;
+            font-weight: background: bold;
             animation: fadeInUp 1s ease-out backwards;
         }
-        
+       
         .slide-1 .intro-info:nth-child(3) { animation-delay: 0.2s; }
         .slide-1 .intro-info:nth-child(4) { animation-delay: 0.4s; }
         .slide-1 .intro-info:nth-child(5) { animation-delay: 0.6s; }
-        
+       
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -155,23 +155,23 @@
                 transform: translateY(0);
             }
         }
-        
+       
         .slide-1 .emoji {
             font-size: 100px;
             animation: bounce 2s infinite;
             display: inline-block;
         }
-        
+       
         @keyframes bounce {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-20px) scale(1.1); }
         }
-        
+       
         /* Slide 2 - Title */
         .slide-2 {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #ff6b6b 100%);
         }
-        
+       
         .slide-2 h1 {
             font-size: 100px;
             color: #fff;
@@ -181,30 +181,30 @@
             font-weight: bold;
             letter-spacing: 3px;
         }
-        
+       
         @keyframes titleBounce {
             0% { transform: scale(0) rotate(-180deg); opacity: 0; }
             60% { transform: scale(1.1) rotate(10deg); }
             100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
-        
+       
         .slide-2 .emoji {
             font-size: 130px;
             animation: spin 3s infinite linear;
             display: inline-block;
             margin: 0 20px;
         }
-        
+       
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        
+       
         /* Slide 3 - Why I Love Math */
         .slide-3 {
             background: linear-gradient(135deg, #43e97b 0%, #38f9d7 50%, #4facfe 100%);
         }
-        
+       
         .slide-3 h2 {
             font-size: 80px;
             color: #fff;
@@ -213,7 +213,7 @@
             font-weight: bold;
             animation: slideDown 0.8s ease-out;
         }
-        
+       
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -224,7 +224,7 @@
                 transform: translateY(0);
             }
         }
-        
+       
         .slide-3 .message-box {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 30px;
@@ -232,7 +232,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        
+       
         @keyframes popIn {
             from {
                 transform: scale(0);
@@ -243,7 +243,7 @@
                 opacity: 1;
             }
         }
-        
+       
         .slide-3 p {
             font-size: 50px;
             background: linear-gradient(135deg, #43e97b, #38f9d7);
@@ -253,12 +253,12 @@
             line-height: 1.6;
             font-weight: bold;
         }
-        
+       
         /* Slide 4 - Counting */
         .slide-4 {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #a8edea 100%);
         }
-        
+       
         .slide-4 h2 {
             font-size: 80px;
             color: #fff;
@@ -266,7 +266,7 @@
             text-shadow: 0 8px 25px rgba(0,0,0,0.4);
             font-weight: bold;
         }
-        
+       
         .slide-4 .subtitle {
             font-size: 70px;
             color: #fff;
@@ -274,14 +274,14 @@
             text-shadow: 0 8px 25px rgba(0,0,0,0.4);
             font-weight: bold;
         }
-        
+       
         .numbers {
             display: flex;
             justify-content: center;
             gap: 35px;
             flex-wrap: wrap;
         }
-        
+       
         .number-box {
             width: 130px;
             height: 130px;
@@ -298,7 +298,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+       
         .number-box::before {
             content: '';
             position: absolute;
@@ -309,18 +309,18 @@
             background: linear-gradient(45deg, transparent, rgba(255,255,255,0.5), transparent);
             animation: shine 3s infinite;
         }
-        
+       
         @keyframes shine {
             0% { transform: rotate(0deg) translate(-100%, -100%); }
             100% { transform: rotate(360deg) translate(100%, 100%); }
         }
-        
+       
         .number-box:nth-child(1) { animation-delay: 0.1s; }
         .number-box:nth-child(2) { animation-delay: 0.2s; }
         .number-box:nth-child(3) { animation-delay: 0.3s; }
         .number-box:nth-child(4) { animation-delay: 0.4s; }
         .number-box:nth-child(5) { animation-delay: 0.5s; }
-        
+       
         @keyframes pop {
             0% {
                 transform: scale(0) rotate(-180deg);
@@ -331,12 +331,12 @@
                 opacity: 1;
             }
         }
-        
+       
         /* Slide 5 - Shapes */
         .slide-5 {
             background: linear-gradient(135deg, #fa709a 0%, #fee140 50%, #feca57 100%);
         }
-        
+       
         .slide-5 h2 {
             font-size: 80px;
             color: #fff;
@@ -344,7 +344,7 @@
             text-shadow: 0 8px 25px rgba(0,0,0,0.4);
             font-weight: bold;
         }
-        
+       
         .slide-5 .subtitle {
             font-size: 70px;
             color: #fff;
@@ -352,47 +352,47 @@
             text-shadow: 0 8px 25px rgba(0,0,0,0.4);
             font-weight: bold;
         }
-        
+       
         .shapes {
             display: flex;
             justify-content: center;
             gap: 60px;
             flex-wrap: wrap;
         }
-        
+       
         .shape-item {
             text-align: center;
             animation: fadeIn 1s ease-out backwards;
         }
-        
+       
         .shape-item:nth-child(1) { animation-delay: 0.2s; }
         .shape-item:nth-child(2) { animation-delay: 0.4s; }
         .shape-item:nth-child(3) { animation-delay: 0.6s; }
-        
+       
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+       
         .shape {
             width: 170px;
             height: 170px;
             margin: 0 auto 25px;
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
         }
-        
+       
         .circle {
             background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
             border-radius: 50%;
             animation: rotate 4s linear infinite;
         }
-        
+       
         .square {
             background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
             border-radius: 20px;
             animation: rotate 4s linear infinite reverse;
         }
-        
+       
         .triangle {
             width: 0;
             height: 0;
@@ -402,12 +402,12 @@
             animation: rotate 4s linear infinite;
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
         }
-        
+       
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        
+       
         .shape-item p {
             font-size: 40px;
             color: #fff;
@@ -418,12 +418,12 @@
             border-radius: 20px;
             display: inline-block;
         }
-        
+       
         /* Slide 6 - Addition */
         .slide-6 {
             background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
         }
-        
+       
         .slide-6 h2 {
             font-size: 70px;
             background: linear-gradient(135deg, #ff6b6b, #ee5a24);
@@ -434,7 +434,7 @@
             font-weight: bold;
             text-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        
+       
         .slide-6 .subtitle {
             font-size: 55px;
             background: linear-gradient(135deg, #ff6b6b, #ee5a24);
@@ -444,7 +444,7 @@
             margin-bottom: 40px;
             font-weight: bold;
         }
-        
+       
         .math-problem {
             font-size: 75px;
             background: rgba(255, 255, 255, 0.95);
@@ -457,17 +457,17 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             animation: mathBounce 2s infinite;
         }
-        
+       
         @keyframes mathBounce {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
-        
+       
         /* Slide 7 - Conclusion */
         .slide-7 {
             background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%);
         }
-        
+       
         .slide-7 h2 {
             font-size: 85px;
             color: #fff;
@@ -476,24 +476,24 @@
             font-weight: bold;
             animation: rainbow 3s infinite;
         }
-        
+       
         @keyframes rainbow {
             0%, 100% { filter: hue-rotate(0deg); }
             50% { filter: hue-rotate(30deg); }
         }
-        
+       
         .slide-7 .big-emoji {
             font-size: 180px;
             margin: 30px 0;
             animation: celebrate 1s infinite;
             display: inline-block;
         }
-        
+       
         @keyframes celebrate {
             0%, 100% { transform: rotate(-10deg) scale(1); }
             50% { transform: rotate(10deg) scale(1.1); }
         }
-        
+       
         .slide-7 p {
             font-size: 55px;
             color: #fff;
@@ -504,7 +504,7 @@
             border-radius: 30px;
             display: inline-block;
         }
-        
+       
         /* Navigation */
         .nav-buttons {
             position: fixed;
@@ -515,7 +515,7 @@
             gap: 25px;
             z-index: 1000;
         }
-        
+       
         button {
             padding: 20px 40px;
             font-size: 28px;
@@ -529,21 +529,21 @@
             transition: all 0.3s ease;
             font-weight: bold;
         }
-        
+       
         button:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
-        
+       
         button:active {
             transform: translateY(-2px);
         }
-        
+       
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-        
+       
         .slide-counter {
             position: fixed;
             top: 40px;
@@ -557,9 +557,52 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             z-index: 1000;
         }
+
+        /* Music Control Button */
+        .music-toggle {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .music-toggle.playing {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
     </style>
 </head>
 <body>
+    <!-- Background Music Element -->
+    <!-- <audio id="bgMusic" loop preload="auto"> -->
+        <!-- <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav"> -->
+        <!-- Note: Replace the src with a kid-friendly upbeat track URL, e.g., from free sources like https://freesound.org or a local file like "kid-music.mp3".
+             This example uses a placeholder bell sound; for real kid music, try searching for "royalty free kids upbeat math song mp3". -->
+        Your browser does not support the audio element.
+    <!-- </audio> -->
+
+    <audio id="bgMusic" loop preload="auto">
+        <!-- ./dupi-lupi-twinkle-toes-226553.mp3 -->
+        <source src="./dupi-lupi-twinkle-toes-226553.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🎵 Play Music</button>
+
     <div class="presentation">
         <!-- Slide 1: Introduction -->
         <div class="slide slide-1 active">
@@ -582,7 +625,7 @@
                 </div>
             </div>
         </div>
-        
+       
         <!-- Slide 2: Title -->
         <div class="slide slide-2">
             <div class="bg-animation">
@@ -595,7 +638,7 @@
                 <div class="emoji">🔢</div>
             </div>
         </div>
-        
+       
         <!-- Slide 3: Why I Love Math -->
         <div class="slide slide-3">
             <div class="bg-animation">
@@ -609,7 +652,7 @@
                 </div>
             </div>
         </div>
-        
+       
         <!-- Slide 4: Counting -->
         <div class="slide slide-4">
             <div class="bg-animation">
@@ -629,7 +672,7 @@
                 </div>
             </div>
         </div>
-        
+       
         <!-- Slide 5: Shapes -->
         <div class="slide slide-5">
             <div class="bg-animation">
@@ -655,7 +698,7 @@
                 </div>
             </div>
         </div>
-        
+       
         <!-- Slide 6: Addition -->
         <div class="slide slide-6">
             <div class="bg-animation">
@@ -670,7 +713,7 @@
                 <div class="math-problem">49 🧑‍🎓 + 1 👨‍🏫 = 50 👥</div>
             </div>
         </div>
-        
+       
         <!-- Slide 7: Conclusion -->
         <div class="slide slide-7">
             <div class="bg-animation">
@@ -687,45 +730,68 @@
             </div>
         </div>
     </div>
-    
+   
     <div class="slide-counter">
         <span id="current">1</span> / <span id="total">7</span>
     </div>
-    
+   
     <div class="nav-buttons">
         <button id="prevBtn" onclick="changeSlide(-1)">⬅️ Back</button>
         <button id="nextBtn" onclick="changeSlide(1)">Next ➡️</button>
     </div>
-    
+   
     <script>
         let currentSlide = 1;
         const totalSlides = 7;
-        
+
+        // Music functionality
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🎵 Play Music';
+                musicToggle.classList.remove('playing');
+            } else {
+                bgMusic.play().catch(e => console.log('Autoplay prevented:', e));
+                musicToggle.textContent = '🔇 Stop Music';
+                musicToggle.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Auto-start music on first slide load (optional, but user gesture may be needed for autoplay)
+        window.addEventListener('load', () => {
+            // bgMusic.play().catch(() => {}); // Uncomment if you want auto-play, but browsers may block it
+        });
+       
         function showSlide(n) {
             const slides = document.querySelectorAll('.slide');
-            
+           
             if (n > totalSlides) currentSlide = totalSlides;
             if (n < 1) currentSlide = 1;
-            
+           
             slides.forEach(slide => slide.classList.remove('active'));
             slides[currentSlide - 1].classList.add('active');
-            
+           
             document.getElementById('current').textContent = currentSlide;
-            
+           
             document.getElementById('prevBtn').disabled = currentSlide === 1;
             document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
         }
-        
+       
         function changeSlide(n) {
             currentSlide += n;
             showSlide(currentSlide);
         }
-        
+       
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
         });
-        
+       
         showSlide(currentSlide);
     </script>
 </body>
